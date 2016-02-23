@@ -50,11 +50,37 @@
 
       _classCallCheck(this, index);
 
+      var version = '0.0.1';
+      var author = 'me';
       this.name = name;
       this.text = text;
+      this.es6Test();
     }
 
     _createClass(index, [{
+      key: 'notRealConst',
+      value: function notRealConst() {
+        var a = [];
+        a.push('Hello');
+        console.log('[notRealConst]: a', a);
+      }
+    }, {
+      key: 'realConst',
+      value: function realConst() {
+        var a = Object.freeze([]);
+        try {
+          a.push('Hello');
+        } catch (ex) {
+          console.log('[realConst]: ', ex);
+        }
+      }
+    }, {
+      key: 'es6Test',
+      value: function es6Test() {
+        this.notRealConst();
+        this.realConst();
+      }
+    }, {
       key: 'message',
       get: function get() {
         return this.text + ' ' + this.name + '!';
